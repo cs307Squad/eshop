@@ -1,0 +1,16 @@
+{% block content %}
+<div class="results">
+{% for product in products %}
+    <div class="result-product">
+        <a href="{{ url_for('review', product_code=product.Product_Code) }}"><img class="main-image" src={{ product.Image_Url }}/></a>
+        <div class="result-details">
+            <p class="main-name">{{ product.Name }}</p>
+            <p class="main-code">{{ product.Code }}</p>
+            <p class="main-price">{{ product.Price }}</p>
+            <p class="main-rating">{{ product.Rating }}</p>
+            <p class="main-number">{{ product.Number_Rating }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
