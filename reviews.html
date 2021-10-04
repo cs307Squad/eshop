@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ name }}</title>
+</head>
+<body>
+{% block content %}
+<div class="reviews">
+{% for i in range(20) %}
+    <div class="review-product">
+        <div class="review-details">
+            <p class="main-review">{{ reviews[i] }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+{% block content %}
+    <h3>Add A Review</h3>
+	<form action="{{ url_for('add',p_code=code) }}" method="POST">
+		<p>Review: <input type = "text" name = "rev" /></p>
+	 </form>
+{% endblock %}
+</body>
+</html>
