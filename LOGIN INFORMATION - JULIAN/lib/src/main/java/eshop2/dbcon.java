@@ -22,11 +22,11 @@ public class dbcon {
 		Connection conn = null;
 		
 		String jdbcURL = String.format("jdbc:mysql:///%s", DB_NAME);
-		Properties connProps = new Properties();
-		connProps.setProperty("user", DB_USER);
-		connProps.setProperty("password", DB_PASSWORD);
-		connProps.setProperty("socketFactory", "com.google.cloud.sql.mysql.SocketFactory");
-		connProps.setProperty("cloudSqlInstance", CONNECTION_NAME);
+		Properties connectorProps = new Properties();
+		connectorProps.setProperty("user", DB_USER);
+		connectorProps.setProperty("password", DB_PASSWORD);
+		connectorProps.setProperty("socketFactory", "com.google.cloud.sql.mysql.SocketFactory");
+		connectorProps.setProperty("cloudSqlInstance", CONNECTION_NAME);
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
