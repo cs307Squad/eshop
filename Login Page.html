@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>E-Shop.io</title>
+		<script src="https://kit.fontawesome.com/5df5e1f1ea.js" crossorigin="anonymous"></script>
+		<link rel = "stylesheet" type ="text/css" href ="style.css">
+		
+        
+	</head>
+		<body>
+			<h3>Login here</h3>
+			
+			<form action ="login.php" method = "post">
+				<table>
+					<tr>
+						<td>Username:</td>
+						<td>
+							<input type ="text" name = "username" placeholder = "username">
+						</td>
+					</tr>
+					
+					<tr>
+						<td>Password:</td>
+						<td>
+							<input type ="password" name ="password" id = "pword" placeholder = "password">
+							<i class="fas fa-eye-slash" id = "hidden" onclick = "showPassword()"></i>
+						    <i class="fas fa-eye" id = "shown" onclick = "showPassword()"></i> 
+							
+							<script src ="showPassword.js">
+							</script> 
+							
+						</td>
+						
+                        <button type ="Login">Login</button>
+		</body>
+</html>
