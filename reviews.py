@@ -5,6 +5,7 @@ from django.db import models
 
 
 class Review:
+    id = models.IntegerField()
     rating_count = models.IntegerField()
     total_rating = models.IntegerField()
     average_rating = models.IntegerField()
@@ -37,16 +38,24 @@ def get_review(id):
 
     fetch_data = db_cursor.fetchone()
 
-    review.message = fetch_data[0]
-    review.user = fetch_data[1]
-    review.rating_count = fetch_data[2]
-    review.total_rating = fetch_data[3]
-    review.average_rating = fetch_data[4]
+    review.id = fetch_data[0]
+    review.message = fetch_data[1]
+    review.user = fetch_data[2]
+    review.rating_count = fetch_data[3]
+    review.total_rating = fetch_data[4]
+    review.average_rating = fetch_data[5]
 
     return review
 
 
 def add_rating(review, score):
+
+    review_id = review.id
+    new_count = review.rating_count + 1
+    new_total_rating = review.total_rating + score
+    new_average = new_total_rating / new_count
+    update_review = "UPDATE Review SET Count = new_count, TotalRating = new_total_rating, AverageRating = average_rating WHERE ReviewID = review_id;"
+    db_cursor.execute(update_review)
 
 
 
