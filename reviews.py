@@ -1,4 +1,3 @@
-import cascade as cascade
 import mysql.connector as connector
 import src.config as config
 from django.db import models
@@ -54,11 +53,7 @@ def add_rating(review, score):
     new_count = review.rating_count + 1
     new_total_rating = review.total_rating + score
     new_average = new_total_rating / new_count
-    update_review = "UPDATE Review SET Count = new_count, TotalRating = new_total_rating, AverageRating = average_rating WHERE ReviewID = review_id;"
+    update_review = "UPDATE Review SET Count = new_count, TotalRating = new_total_rating, AverageRating = average_rating" \
+                    " WHERE ReviewID = review_id;"
     db_cursor.execute(update_review)
-
-
-
-
-
 
