@@ -1,4 +1,5 @@
-from flask import render_template, request, jsonify, url_for
+from dominate import document
+from flask import render_template, request, jsonify, url_for, redirect
 from flask import render_template, request, jsonify, url_for
 from __main__ import app
 import src.models
@@ -41,7 +42,7 @@ def product_table(data):
 def search(res):
     if request.method == 'POST':
         result = src.models.get_product(res)
-        return render_template('results.html', products=product_table(result))
+        return redirect(url_for('find'))
     else:
         return render_template('home.html')
 
@@ -49,6 +50,8 @@ def search(res):
 def find():
     res = request.args["re"]
     result = src.models.get_product(res)
+    select = document.getElementById("column")
+    if select = ''
     return render_template('results.html', products=product_table(result))
 
 @app.route('/submit')
