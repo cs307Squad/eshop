@@ -1,4 +1,5 @@
-from flask import render_template, request, jsonify, url_for
+from dominate import document
+from flask import render_template, request, jsonify, url_for, redirect
 from flask import render_template, request, jsonify, url_for
 from __main__ import app
 import src.models
@@ -40,8 +41,28 @@ def product_table(data):
 @app.route('/', methods=['POST', 'GET'])
 def search(res):
     if request.method == 'POST':
-        result = src.models.get_product(res)
-        return render_template('results.html', products=product_table(result))
+        select = document.getElementById( "column" )
+        if select == "url":
+            result = src.models.get_products_url(res)
+        elif select == "rating":
+            result = src.models.get_products_rating(res)
+        elif select == "price":
+            result = src.models.get_products_price(res)
+        elif select == "num_rating":
+            result = src.models.get_products_nrate(res)
+        elif select == "qty_in_stock":
+            result = src.models.get_products_qstock(res)
+        elif select == "product_code":
+            result = src.models.get_products_pcode(res)
+        elif select == "product_type":
+            result = src.models.get_products_ptype(res)
+        elif select == "category":
+            result = src.models.get_products_cat(res)
+        elif select == "image_url":
+            result = src.models.get_products_image(res)
+        else:
+            result = src.models.get_products_name(res)
+        return redirect(url_for('find'))
     else:
         return render_template('home.html')
 
