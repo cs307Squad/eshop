@@ -5,11 +5,8 @@
     <title>E-shop.io</title>
 </head>
 <body>
-.label {
-    font-size: 7px;
-}
 
-{% block content %}
+
 <div class="home-page">
   <form name="search" action="/results">
     <input class="search-bar" type="text" placeholder="  Search for products ..." name="re">
@@ -20,7 +17,7 @@
         <option value="rating">rating</option>
         <option value="price">price</option>
         <option value="number_rating">number_rating</option>
-        <option value="image_url"></option>
+        <option value="image_url">image_url</option>
         <option value="qty_in_stock">qty_in_stock</option>
         <option value="product_code">product_code</option>
         <option value="product_type">product_type</option>
@@ -29,6 +26,6 @@
     <button class="button" type="submit">Search</button>
   </form>
 </div>
-{% endblock %}
+
 </body>
 </html>
