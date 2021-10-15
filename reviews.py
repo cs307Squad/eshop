@@ -1,59 +1,78 @@
-import mysql.connector as connector
-import src.config as config
 from django.db import models
+import google.cloud.sql.connector as connector
+from google.cloud import storage
+import os
 
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "C:/Users/Lenovo/Downloads/eshopserver-9b6af4865a97.json"
 
-class Review:
-    id = models.IntegerField()
-    rating_count = models.IntegerField()
-    total_rating = models.IntegerField()
-    average_rating = models.IntegerField()
+storage_client = storage.Client()
+buckets = list(storage_client.list_buckets())
 
-    message = models.TextField()
-    user = models.ForeignKey('User')
-
-
-
-db_connection = None
-db_cursor = None
-
-try:
-    db_connection = connector.connect(user=config.db_user,
-                                      password=config.db_password,
-                                      host=config.db_host,
-                                      database=config.db_name)
-except connector.Error as err:
-    print("ERROR")
-
-db_cursor = db_connection.cursor(buffered=True)
+db_connection = connector.connect("eshopserver:us-central1:tables", "pymysql", user='root',
+                                  password='JulianNagelsmann',
+                                  host='34.71.136.78',
+                                  db='eshop')
+db_cursor = db_connection.cursor()
 db_cursor.execute("SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED")
 db_cursor.execute("USE eshop")
 
 
-def get_review(id):
-    get_review_sql = "SELECT * FROM Review WHERE Review.id=id;"
-    db_cursor.execute(get_review_sql)
-    review = Review()
+class Review:
+    product_id = models.IntegerField()
+    id = models.IntegerField()
+    body = models.TextField()
+    rating_count = models.IntegerField()
+    total_rating = models.IntegerField()
+    user_id = models.IntegerField()
 
+
+def get_review(id):
+    get_review_sql = "SELECT * FROM Reviews WHERE ID=%s;"
+    db_cursor.execute(get_review_sql, [id])
+    review = Review()
     fetch_data = db_cursor.fetchone()
 
-    review.id = fetch_data[0]
+    if fetch_data == None:
+        print("No review with that id")
+        return None
+
+    print(fetch_data)
+    review.product_id = fetch_data[0]
     review.message = fetch_data[1]
-    review.user = fetch_data[2]
+    review.total_rating = fetch_data[2]
     review.rating_count = fetch_data[3]
-    review.total_rating = fetch_data[4]
-    review.average_rating = fetch_data[5]
+    review.user_id = fetch_data[4]
+    review.id = fetch_data[5]
 
     return review
 
 
 def add_rating(review, score):
-
-    review_id = review.id
+    id = review.id
     new_count = review.rating_count + 1
     new_total_rating = review.total_rating + score
-    new_average = new_total_rating / new_count
-    update_review = "UPDATE Review SET Count = new_count, TotalRating = new_total_rating, AverageRating = average_rating" \
-                    " WHERE ReviewID = review_id;"
-    db_cursor.execute(update_review)
+    update_review = '''UPDATE Reviews SET Score_Count = %s, Total_Score = %s WHERE ID = %s;'''
+    db_cursor.execute(update_review, (new_count, new_total_rating, id))
+    db_connection.commit()
 
+
+def like_rating(id, like):
+    review = get_review(id)
+    if review is None:
+        return
+
+    if like:
+        add_rating(review, 1)
+    else:
+        add_rating(review, -1)
+
+
+if __name__ == "__main__":
+    like_rating(1,True)
+    get_review(1)
+    like_rating(1,False)
+    get_review(1)
+    like_rating(0, True)
+    get_review(1)
+    like_rating(0, False)
+    get_review(1)
