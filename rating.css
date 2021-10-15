@@ -1,0 +1,106 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+body {
+    margin: 5%;
+    text-align: center;
+    background: #fff;
+    color: #fff;
+}
+h1 {
+    font-size: 2em;
+    margin-bottom: .5rem;
+    color: black;
+}
+.rate {
+    display: inline-block;
+    border: 0;
+}
+/* Hide radio */
+.rate > input {
+    display: none;
+}
+.rate > label {
+    float: right;
+}
+.rate > label:before {
+    display: inline-block;
+    font-size: 2rem;
+    padding: .3rem .2rem;
+    margin: 0;
+    cursor: pointer;
+    font-family: FontAwesome;
+    content: "\f005 ";
+}
+.rate .onTen:before {
+    content: "\f089 ";
+    position: absolute;
+    padding-right: 0;
+    width: 10%;
+}
+
+.rate .twTen:before {
+    content: "\f089 ";
+    position: absolute;
+    padding-right: 0;
+    width: 20%;
+}
+
+.rate .thTen:before {
+    content: "\f089 ";
+    position: absolute;
+    padding-right: 0;
+    width: 30%;
+}
+
+.rate .foTen:before {
+    content: "\f089 ";
+    position: absolute;
+    padding-right: 0;
+    width: 40%;
+}
+
+.rate .fiTen:before {
+    content: "\f089 ";
+    position: absolute;
+    padding-right: 0;
+    width: 50%;
+}
+
+.rate .siTen:before {
+    content: "\f089 ";
+    position: absolute;
+    padding-right: 0;
+    width: 60%;
+}
+
+.rate .seTen:before {
+    content: "\f089 ";
+    position: absolute;
+    padding-right: 0;
+    width: 70%;
+}
+
+.rate .eiTen:before {
+    content: "\f089 ";
+    position: absolute;
+    padding-right: 0;
+    width: 80%;
+}
+
+.rate .niTen:before {
+    content: "\f089 ";
+    position: absolute;
+    padding-right: 0;
+    width: 90%;
+}
+
+.rate .teTen:before {
+    content: "\f089 ";
+    position: absolute;
+    padding-right: 0;
+    width: 100%;
+}
+input:checked ~ label,
+label:hover, label:hover ~ label { color: #FFFF00;  }
+input:checked + label:hover, input:checked ~ label:hover,
+input:checked ~ label:hover ~ label,
+label:hover ~ input:checked ~ label { color: #FFFF24;  }
