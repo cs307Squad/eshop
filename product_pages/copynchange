@@ -1,11 +1,37 @@
 #!/bin/bash
 
-sudo cp /var/www/html/DemoProduct/product_pages/1.html $HOME/eshop/product_pages/
-sudo cp /var/www/html/DemoProduct/product_pages/2.html $HOME/eshop/product_pages/
-sudo cp /var/www/html/DemoProduct/product_pages/3.html $HOME/eshop/product_pages/
+sudo cp /var/www/html/DemoProduct/product_pages/1.php $HOME/eshop/product_pages/
+sudo cp /var/www/html/DemoProduct/product_pages/2.php $HOME/eshop/product_pages/
+sudo cp /var/www/html/DemoProduct/product_pages/3.php $HOME/eshop/product_pages/
 
-sudo chmod 777 1.html
-sudo chmod 777 2.html
-sudo chmod 777 3.html
 
+
+sudo chmod 777 1.php
+sudo chmod 777 2.php
+sudo chmod 777 3.php
+
+sudo cp /var/www/html/DemoProduct/product_pages/cancel.html $HOME/eshop/product_pages/
+sudo cp /var/www/html/DemoProduct/product_pages/checkout.html $HOME/eshop/product_pages/
+sudo cp /var/www/html/DemoProduct/product_pages/checkout.php $HOME/eshop/product_pages/
+sudo cp /var/www/html/DemoProduct/product_pages/composer.json $HOME/eshop/product_pages/
+sudo cp /var/www/html/DemoProduct/product_pages/composer.lock $HOME/eshop/product_pages/
+sudo cp /var/www/html/DemoProduct/product_pages/connect.php $HOME/eshop/product_pages/
+sudo cp /var/www/html/DemoProduct/product_pages/create-checkout-session.php $HOME/eshop/product_pages/
+sudo cp /var/www/html/DemoProduct/product_pages/create-checkout-session1.php $HOME/eshop/product_pages/
+sudo cp /var/www/html/DemoProduct/product_pages/create-checkout-session2.php $HOME/eshop/product_pages/
+sudo cp /var/www/html/DemoProduct/product_pages/style.css $HOME/eshop/product_pages/
+sudo cp /var/www/html/DemoProduct/product_pages/successs.html $HOME/eshop/product_pages/
+
+
+sudo chmod 777 cancel.html
+sudo chmod 777 checkout.html
+sudo chmod 777 checkout.php
+sudo chmod 777 composer.json
+sudo chmod 777 composer.lock
+sudo chmod 777 connect.php
+sudo chmod 777 create-checkout-session.php
+sudo chmod 777 create-checkout-session1.php
+sudo chmod 777 create-checkout-session2.php
+sudo chmod 777 style.css
+sudo chmod 777 successs.html
 
