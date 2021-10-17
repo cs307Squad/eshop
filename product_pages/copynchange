@@ -1,0 +1,11 @@
+#!/bin/bash
+
+sudo cp /var/www/html/DemoProduct/product_pages/1.html $HOME/eshop/product_pages/
+sudo cp /var/www/html/DemoProduct/product_pages/2.html $HOME/eshop/product_pages/
+sudo cp /var/www/html/DemoProduct/product_pages/3.html $HOME/eshop/product_pages/
+
+sudo chmod 777 1.html
+sudo chmod 777 2.html
+sudo chmod 777 3.html
+
+
