@@ -5,6 +5,8 @@
 		<title>E-Shop.io</title>
 		<script src="https://kit.fontawesome.com/5df5e1f1ea.js" crossorigin="anonymous"></script>
 		<link rel = "stylesheet" type ="text/css" href ="style.css">
+		
+        
 	</head>
 		<body>
 			<h3>Register</h3>
@@ -48,7 +50,14 @@
 						<td>Email:</td>
 						<td>
 							<input type = "email" name = "email" id = "email" placeholder = "email">
+						</td>
 					</tr>
+
+					<tr>
+						<td>Phone Number:</td>
+						<td>
+							<input type = "tel" name = "telephone" id = "telephone" placeholder = "telephone#">
+						</td>
 					
 					<tr>
 						<td>
