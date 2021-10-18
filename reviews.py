@@ -70,9 +70,4 @@ def like_rating(id, like):
 if __name__ == "__main__":
     like_rating(1,True)
     get_review(1)
-    like_rating(1,False)
-    get_review(1)
-    like_rating(0, True)
-    get_review(1)
-    like_rating(0, False)
-    get_review(1)
+
