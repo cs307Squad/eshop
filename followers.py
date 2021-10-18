@@ -16,6 +16,7 @@ db_cursor = db_connection.cursor()
 db_cursor.execute("SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED")
 db_cursor.execute("USE eshop")
 
+
 class Customer:
     id = models.IntegerField()
     user_name = models.TextField()
@@ -65,5 +66,5 @@ def print_followers(customer_id):
 
 if __name__ == "__main__":
     update_follower_count(1, 1)
-    add_follower(1,3)
+    add_follower(1, 3)
     print_followers(1)
