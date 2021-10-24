@@ -1,0 +1,46 @@
+|          193 |           NULL | https://www.amazon.com/Charmnight-Fishnet-Stockings-Pantyhose-Black-g5/dp/B07NV4JGTG/ref=zg_bs_fashion_43/146-8897538-5593369?_encoding=UTF8&psc=1&refRID=3Z8315RA6M61XEX26WJ6                                      
+           | 4.6 out of 5 stars |         28447 | https://images-na.ssl-images-amazon.com/images/I/61e5aE3kxZL._AC_UL200_SR200,200_.jpg     | Charmnight Womens High Waist Tights Fishnet Stockings Thigh High Pantyhose                              
+                           | NULL  | NULL        |           67 |     7 | NULL | Socking              | Clothes                       |
+|          194 |           NULL | https://www.amazon.com/Shirts-Women-Summer-Sleeve-Black/dp/B08S34FZKM/ref=zg_bs_fashion_44/146-8897538-5593369?_encoding=UTF8&psc=1&refRID=3Z8315RA6M61XEX26WJ6                                                     
+           | 4.4 out of 5 stars |          7221 | https://images-na.ssl-images-amazon.com/images/I/51vrIA7y1cL._AC_UL200_SR200,200_.jpg     | WIHOLL Womens Tops V Neck Summer Petal Sleeve Casual Tshirts                                            
+                           | NULL  | NULL        |          390 |    22 | NULL | Tshirt               | Clothes                       |
+|          195 |           NULL | https://www.amazon.com/Gildan-Heavy-Cotton-T-Shirt-2-Pack/dp/B07MGYJJ6Z/ref=zg_bs_fashion_45/146-8897538-5593369?_encoding=UTF8&psc=1&refRID=3Z8315RA6M61XEX26WJ6                                                   
+           | 4.5 out of 5 stars |         29150 | https://images-na.ssl-images-amazon.com/images/I/71kM3J7wfHL._AC_UL200_SR200,200_.jpg     | Gildan Men's Heavy Cotton T-Shirt, Style G5000, 2-Pack                                                  
+                           | NULL  | NULL        |           87 |    29 | NULL | Tshirt               | Clothes                       |
+|          196 |           NULL | https://www.amazon.com/Colorfulkoala-Buttery-Full-Length-Leggings-Midnight/dp/B07CNMHHF7/ref=zg_bs_fashion_46/146-8897538-5593369?_encoding=UTF8&psc=1&refRID=3Z8315RA6M61XEX26WJ6                                  
+           | 4.4 out of 5 stars |         32536 | https://images-na.ssl-images-amazon.com/images/I/71cR4LGejFS._AC_UL200_SR200,200_.jpg     | Colorfulkoala Women's Buttery Soft High Waisted Yoga Pants Full-Length Leggings                         
+                           | NULL  | NULL        |          264 |    23 | NULL | Legging              | Clothes                       |
+|          197 |           NULL | https://www.amazon.com/New-Balance-Boxer-3-Pack-Pigment/dp/B07KZHDW5Y/ref=zg_bs_fashion_47/146-8897538-5593369?_encoding=UTF8&psc=1&refRID=3Z8315RA6M61XEX26WJ6                                                     
+           | 4.6 out of 5 stars |         44067 | https://images-na.ssl-images-amazon.com/images/I/A1TIe2I2ezL._AC_UL200_SR200,200_.jpg     | New Balance Men's 6" Boxer Brief Fly Front with Pouch, 3-Pack                                           
+                           | NULL  | NULL        |          217 |    45 | NULL | Boxer                | Clothes                       |
+|          198 |           NULL | https://www.amazon.com/Leggings-Depot-JYL19-BLACK-S-ActiveFlex-Slim-fit/dp/B086V4ZZZP/ref=zg_bs_fashion_48/146-8897538-5593369?_encoding=UTF8&psc=1&refRID=3Z8315RA6M61XEX26WJ6                                     
+           | 4.4 out of 5 stars |         76975 | https://images-na.ssl-images-amazon.com/images/I/61yM1iLCSyL._AC_UL200_SR200,200_.jpg     | Leggings Depot Women's Printed Solid Activewear Jogger Track Cuff Sweatpants                            
+                           | NULL  | NULL        |          320 |    17 | NULL | Sweatpant            | Clothes                       |
+|          199 |           NULL | https://www.amazon.com/Simple-Joys-Carters-4-Pack-Preemie/dp/B0744PQRWH/ref=zg_bs_fashion_49/146-8897538-5593369?_encoding=UTF8&psc=1&refRID=3Z8315RA6M61XEX26WJ6                                                   
+           | 4.8 out of 5 stars |         51362 | https://images-na.ssl-images-amazon.com/images/I/91G9QFYCHrL._AC_UL200_SR200,200_.jpg     | Simple Joys by Carter's Boys' 4-Pack Fleece Pants                                                       
+                           | NULL  | NULL        |          178 |    17 | NULL | Pant                 | Clothes                       |
+|          200 |           NULL | https://www.amazon.com/Hey-Dude-Mens-Wally-Loafers/dp/B07BRSW2VN/ref=zg_bs_fashion_50/146-8897538-5593369?_encoding=UTF8&psc=1&refRID=3Z8315RA6M61XEX26WJ6                                                          
+           | 4.8 out of 5 stars |         42553 | https://images-na.ssl-images-amazon.com/images/I/61zCSGvDMJS._AC_UL200_SR200,200_.jpg     | Hey Dude Men's Wally Sox Shoes Multiple Colors                                                          
+                           | NULL  | NULL        |          295 |   121 | NULL | Shoe                 | Clothes
+
+
+
++------------------+
+| Tables_in_eshop  |
++------------------+
+| Customer         |
+| Customer_Order   |
+| Customer_Website |
+| Feature          |
+| Follower         |
+| Merchant         |
+| Merchant_Website |
+| Order_Product    |
+| Orders           |
+| Page             |
+| Payment          |
+| Product          |
+| Productline      |
+| Reviews          |
+| Website          |
++------------------+
