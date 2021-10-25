@@ -64,7 +64,11 @@ def print_followers(customer_id):
     print(fetch_data)
 
 
+def print_customers(fetch_data):
+    for data in fetch_data:
+        print(data)
+
+
 if __name__ == "__main__":
-    update_follower_count(1, 1)
-    add_follower(1, 3)
+    add_follower(1,6)
     print_followers(1)
