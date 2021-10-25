@@ -11,7 +11,7 @@
   <form name="search" action="" method="post">
     <input class="search-bar" type="text" placeholder="  Search for products ..." name="re">
     <label for="column">select by:</label>
-    <select id="column">
+    <select id="column" name="col">
         <option value="name">name</option>
         <option value="url">url</option>
         <option value="rating">rating</option>
@@ -21,7 +21,6 @@
         <option value="qty_in_stock">qty_in_stock</option>
         <option value="product_code">product_code</option>
         <option value="product_type">product_type</option>
-        <option value="price">price</option>
     </select>
     <button class="button" type="submit">Search</button>
   </form>
