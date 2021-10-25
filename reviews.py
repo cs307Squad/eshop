@@ -66,9 +66,19 @@ def like_rating(id, like):
     else:
         add_rating(review, -1)
 
-def add_review(content, product_id):
+
+def add_review(content, product_id, score):
     new_review = '''INSERT INTO Reviews (message, productID)VALUES(%s, %s);'''
     db_cursor.execute(new_review, (content, product_id))
+    if score is not None:
+        add_product_rating(score, product_id)
+
+    db_connection.commit()
+
+
+def add_product_rating(product_id, score):
+    add_product_rating = '''UPDATE Reviews SET Rating_Score = %s WHERE ProductID = %s;'''
+    db_cursor.execute(add_product_rating, (score, product_id))
     db_connection.commit()
 
 
