@@ -66,6 +66,11 @@ def like_rating(id, like):
     else:
         add_rating(review, -1)
 
+def add_review(content, product_id):
+    new_review = '''INSERT INTO Reviews (message, productID)VALUES(%s, %s);'''
+    db_cursor.execute(new_review, (content, product_id))
+    db_connection.commit()
+
 
 if __name__ == "__main__":
     like_rating(1, True)
