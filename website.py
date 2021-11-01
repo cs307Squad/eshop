@@ -51,6 +51,25 @@ def revert_changes(website, website_id):
     website.javascript_files = previous.javascript_files
     website.html_files = previous.html_files
 
+     
+def auto_save(website):
+    auto_update = "UPDATE Website (%s,%s,%s,%s,%s);"
+    db_cursor.execute(auto_update)
+    data = db_cursor.fetchone()
+    if data is None:
+        print("website error")
+        return None
+
+    website = Website()
+
+    website.id = id
+    website.name = data[1]
+    website.page_id = data[2]
+    website.javascript_files = data[3]
+    website.html_files = data[4]
+
+    return website
+
 
 
 
