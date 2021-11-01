@@ -42,8 +42,15 @@ def get_last_save(id):
 
     return website
 
-# def revert_changes(website, website_id):
-#
+def revert_changes(website, website_id):
+    previous = get_last_save(id)
+
+    website.id = previous.id
+    website.name = previous.name
+    website.page_id = previous.page_id
+    website.javascript_files = previous.javascript_files
+    website.html_files = previous.html_files
+
 
 
 
