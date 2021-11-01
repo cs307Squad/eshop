@@ -1,0 +1,5 @@
+1. test switching from default theme to dark theme
+
+2. test switching from default theme to light theme
+
+3. test switching back and forth between themes 10 times each and make sure function does not crash 
