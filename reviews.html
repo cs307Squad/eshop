@@ -64,7 +64,14 @@ label:hover ~ input:checked ~ label { color: #E1E72DFF;  }
                 <div style="width: {{ review.rating * 8 }}px; overflow: hidden;">
                 <img src="https://i.ibb.co/1ZjfSzB/5star.png" alt="5star" height="20px" width="40px">
                 </div>
-                <p class="main-review">Review: {{ review.review }}</p>
+                {% set a = review.review %}
+                {% if a[0:5] != 'https' %}
+                    <p class="main-review">Review: {{ a }}</p>
+                {% else %}
+                    <!---<p><video src="{{ a }}" width="500" height="320"></video></p>--->
+                    <iframe width="500" height="320" src="{{ a }}">
+                    </iframe>
+                {% endif %}
             </div1>
         </div1>
     {% endfor %}
@@ -72,6 +79,9 @@ label:hover ~ input:checked ~ label { color: #E1E72DFF;  }
 <form method="POST">
     <field>
         <input type="text" name="review">
+    </field>
+    <field>
+    <input type="text" name="rev" placeholder="add video review">
     </field>
 <fieldset class="rate">
     <input type="radio" id="rating10" name="rating" value="10" /><label for="rating10" title="5 stars"></label>
@@ -86,6 +96,6 @@ label:hover ~ input:checked ~ label { color: #E1E72DFF;  }
     <input type="radio" id="rating1" name="rating" value="1" /><label class="half" for="rating1" title="1/2 star"></label>
 </fieldset>
 <button type="submit">Submit</button>
-    </form>
+</form>
 </body>
 </html>
