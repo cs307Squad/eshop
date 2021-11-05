@@ -60,7 +60,7 @@ for($i = 0; $i < 32; $i++){
 	if(isset($_POST[$i])){
 		setcookie("day", $i, time() + (86400 * 30), "/");
 		setcookie("month",$date['mon'], time(), +(86400 * 30), "/");
-		header("Location:../createlists.php");
+		header("Location:createlist.php");
 	}
 }
 
@@ -75,6 +75,7 @@ $wday = $date['wday'];
 $month = $date['month'];
 $year = $date['year'];
 
+//echo $mon."/".$month."/".$year;
 
 $dayCount = $wday;
 $day = $mday;

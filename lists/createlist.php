@@ -72,13 +72,14 @@ if(isset($_POST['start_create'])){
 
 }else if(isset($_POST['create'])){
 
-    $sql = "select * from tasks";
+    $sql = "select * from Tasks";
     $get = mysqli_query($conn, $sql);
     if(!$get){
         echo $conn->error;
     }
 
     $all = mysqli_num_rows($get);
+    $task_id = $all+1;
 
     $task_Id = $all+1;
 
@@ -90,9 +91,9 @@ if(isset($_POST['start_create'])){
     $tasks = "";
     for($i = 0; $i < $total; $i++){
         $current = "task".$i;
-        $tasks.$_POST[$current]."-0";
+        $tasks = $tasks.$_POST[$current];
         if($i != $total-1){
-            $tasks.",";
+            $tasks=$tasks.",";
         }
     }
     
@@ -101,7 +102,7 @@ if(isset($_POST['start_create'])){
     if(!$result){
         echo $conn->error;
     }else{
-        header("Location:viewLists.php");
+        header("Location:calendar/viewLists.php");
     }
 }else{
     echo "
@@ -118,14 +119,14 @@ if(isset($_POST['start_create'])){
 
 
         How many tasks would you like to add:  <select name=\"num_tasks\">
-            <option value=\"1\">User 1</option>
-            <option value=\"2\">User 2</option>
-            <option value=\"3\">User 3</option>
-            <option value=\"4\">User 4</option>
-            <option value=\"5\">User 5</option>
-            <option value=\"6\">User 6</option>
-            <option value=\"7\">User 7</option>
-            <option value=\"8\">User 8</option>
+            <option value=\"1\">1</option>
+            <option value=\"2\">2</option>
+            <option value=\"3\">3</option>
+            <option value=\"4\">4</option>
+            <option value=\"5\">5</option>
+            <option value=\"6\">6</option>
+            <option value=\"7\">7</option>
+            <option value=\"8\">8</option>
         </select><br/>
 
 

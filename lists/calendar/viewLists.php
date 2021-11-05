@@ -41,8 +41,15 @@
         ";
 
         $user = $_POST['user'];
-    
-        $query = "select * from Tasks where User_ID = '$user'";
+	$day = $_COOKIE['date'];
+	//$month = $_COOKIE['month'];
+
+	$date = getdate();
+	$year = $date['year'];
+
+	$picked = $day."/".$year;
+
+        $query = "select * from ManagerTasks where User_ID = '$user' and Due = '$picked'";
         $result = mysqli_query($conn, $query);
 
         if(!$result){

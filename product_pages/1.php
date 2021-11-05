@@ -50,9 +50,24 @@ echo"
         <!-- Your share button code -->
         <div class=\"fb-share-button\" data-href=\"http://34.125.248.39/DemoProduct/product_pages/1.html\" data-layout=\"button_count\">
         </div><br/>
+<br/>
+	<form action=\"https://test.bitpay.com/checkout\" method=\"post\">
+  <input type=\"hidden\" name=\"action\" value=\"checkout\" />
+  <input type=\"hidden\" name=\"posData\" value=\"\" />
+  <input type=\"hidden\" name=\"notificationType\" value=\"json\" />
+  <input type=\"hidden\" name=\"data\" value=\"QxLrK8CtUhfe/pzYsj1gk8Nung2twWAxHxNYfMTYOt8ijMbhQdSDCZFpOjIwmy4zvHwsHBXbC6zXCmW6ja3F5v8QQO96iwzjr3QIKkHwqrp+eMDlm5E0yaZjTUXh8d6GoeZ6Eew7pE/5o8cxqCuo1PpVkCUl16ROh1hhwummTSktp28MWL1XKlPCXns9+JmZHGlkSjuhHgY31E/eoDZTp9+wqz0JcSCoHGnvUj68/O4laA2TQuIHrGLU9EgHTKklPtVAhDsIDVgTEPenPzjNLdulBS5EA8tgLeMtMZzuRpsASlyGGcr0//7+Ry8ek5/tfNWiVC5V0WlqhoDEp7hw4w==\" />
+  <input type=\"image\" src=\"https://test.bitpay.com/cdn/en_US/bp-btn-pay-currencies.svg\" name=\"submit\" style=\"width: 210px\" alt=\"BitPay, the easy way to pay with bitcoins.\">
+</form>
+
+
+<form action=\"upload.php\" method=\"post\" enctype=\"multipart/form-data\">
+  Select image to upload:
+  <input type=\"file\" name=\"fileToUpload\" id=\"fileToUpload\">
+            <p><button name=\"echeck\" type=\"submit\" id=\"checkout-button\">Pay With Echeck</button></p>
+</form>
 
         <form action=\"create-checkout-session.php\" method=\"POST\">
-            <p><button name=\"submit\" type=\"submit\" id=\"checkout-button\">Checkout</button></p>
+            <p><button name=\"submit\" type=\"submit\" id=\"checkout-button\">Traditional Checkout</button></p>
         </form>
         <!-- Load Facebook SDK for JavaScript -->
 
