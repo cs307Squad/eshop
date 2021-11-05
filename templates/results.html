@@ -1,0 +1,102 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+div {
+    background-color: white;
+    border: 10px blue;
+    padding: 20px;
+    width: 1200px;
+}
+
+p {
+    display: inline-block;
+}
+
+.main-name {
+    width: 100px;
+    padding-left: 80px;
+}
+
+.main-code {
+    width: 100px;
+}
+
+.main-price {
+    width: 100px;
+}
+
+.main-rating {
+    width: 100px;
+}
+
+.main-number {
+    width: 100px;
+}
+
+body{
+    background-color: #E0FFFF;
+    color: black;
+    font-size: 16px;
+}
+
+</style>
+</head>
+<body>
+{% block content %}
+<div2 class="results">
+{% if products == [] %}
+    <h1>Product(s) not found</h1>
+{% else %}
+    <h1>Electronics</h1>
+    <img src="https://i.ibb.co/7QMpC6n/lick.jpg" height="200px" width="400px">
+    {% for i in range(((products | length) / 3) | int) %}
+        <div class="result-product">
+            <div1 class="result-details">
+                <a href="{{ url_for('review',user=usr, product_code=products[i * 3].Product_Code) }}"><img class="main-image" src={{ products[i * 3].Image_Url }} width="200px"></a>          <a href="{{ url_for('review',user=usr, product_code=products[i * 3 + 1].Product_Code) }}"><img class="main-image" src={{ products[i * 3 + 1].Image_Url }} padding-left="150px" width="200px"></a>          <a href="{{ url_for('review',user=usr, product_code=products[i * 3 + 2].Product_Code) }}"><img class="main-image" src={{ products[i * 3 + 2].Image_Url }} padding-left="150px" width="200px"></a>
+                <br>
+                <p class="main-name">Name: {{ products[i * 3].Name }}</p>        <p class="main-name">Name: {{ products[i * 3 + 1].Name }}</p>        <p class="main-name">Name: {{ products[i * 3 + 2].Name }}</p>
+                <br>
+                <span class="main-code" style="padding-left: 80px;">Code: {{ products[i * 3].Product_Code }}</span>          <span class="main-code" style="padding-left: 130px;">Code: {{ products[i * 3 + 1].Product_Code }}</span>          <span class="main-code" style="padding-left: 130px;">Code: {{ products[i * 3 + 2].Product_Code }}</span>
+                <br>
+                <span class="main-price" style="padding-left: 80px;">Price: ${{ products[i * 3].Price }}</span>          <span class="main-price" style="padding-left: 114px;">Price: ${{ products[i * 3 + 1].Price }}</span>          <span class="main-price" style="padding-left: 116px;">Price: ${{ products[i * 3 + 2].Price }}</span>
+                <br>
+                <span class="main-rating" style="padding-left: 80px;">Rating: {{ products[i * 3].Rating }}</span>          <span class="main-rating" style="padding-left: 22px;">Rating: {{ products[i * 3 + 1].Rating }}</span>          <span class="main-rating" style="padding-left: 22px;">Rating: {{ products[i * 3 + 2].Rating }}</span>
+                <br>
+                <span class="main-number" style="padding-left: 80px;">Ratings: {{ products[i * 3].Number_Rating }}</span>          <span class="main-number" style="padding-left: 74px;">Ratings: {{ products[i * 3 + 1].Number_Rating }}</span>          <span class="main-number" style="padding-left: 80px;">Ratings: {{ products[i * 3 + 2].Number_Rating }}</span>
+            </div1>
+        </div>
+        <br>
+    {% endfor %}
+    {% if (products | length) % 3 == 1 %}
+        <div class="result-product">
+            <div1 class="result-details">
+                <a href="{{ url_for('review',user=usr, product_code=products[(products | length) - 1].Product_Code) }}"><img class="main-image" src={{ products[(products | length) - 1].Image_Url }}></a>
+                <p class="main-name">Name: {{ products[(products | length) - 1].Name }}</p>
+                <p class="main-code">Code: {{ products[(products | length) - 1].Product_Code }}</p>
+                <p class="main-price">Price: ${{ products[(products | length) - 1].Price }}</p>
+                <p class="main-rating">Rating: {{ products[(products | length) - 1].Rating }}</p>
+                <p class="main-number">Number of ratings: {{ products[(products | length) - 1].Number_Rating }}</p>
+            </div1>
+        </div>
+    {% elif (products | length) % 3 == 2 %}
+        <div class="result-product">
+            <div1 class="result-details">
+                <a href="{{ url_for('review',user=usr, product_code=products[(products | length) - 2].Product_Code) }}"><img class="main-image" src={{ products[(products | length) - 2].Image_Url }} width="200px"></a>          <a href="{{ url_for('review',user=usr, product_code=products[(products | length) - 1].Product_Code) }}"><img class="main-image" src={{ products[(products | length) - 1].Image_Url }} padding-left="150px" width="200px"></a>
+                <br>
+                <p class="main-name">Name: {{ products[(products | length) - 2].Name }}</p>        <p class="main-name">Name: {{ products[(products | length) - 1].Name }}</p>
+                <br>
+                <span class="main-code" style="padding-left: 80px;">Code: {{ products[(products | length) - 2].Product_Code }}</span>          <span class="main-code" style="padding-left: 130px;">Code: {{ products[(products | length) - 1].Product_Code }}</span>
+                <br>
+                <span class="main-price" style="padding-left: 80px;">Price: ${{ products[(products | length) - 2].Price }}</span>          <span class="main-price" style="padding-left: 114px;">Price: ${{ products[(products | length) - 1].Price }}</span>
+                <br>
+                <span class="main-rating" style="padding-left: 80px;">Rating: {{ products[(products | length) - 2].Rating }}</span>          <span class="main-rating" style="padding-left: 22px;">Rating: {{ products[(products | length) - 1].Rating }}</span>
+                <br>
+                <span class="main-number" style="padding-left: 80px;">Ratings: {{ products[(products | length) - 2].Number_Rating }}</span>          <span class="main-number" style="padding-left: 74px;">Ratings: {{ products[(products | length) - 1].Number_Rating }}</span>
+            </div1>
+        </div>
+    {% endif %}
+{% endif %}
+</div2>
+{% endblock %}
+</body>
