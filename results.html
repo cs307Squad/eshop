@@ -2,115 +2,101 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 
-body {
-  font-size: 25px;
-}
-
 div {
     background-color: white;
     border: 10px blue;
     padding: 20px;
-    width: 600px;
+    width: 1200px;
 }
 
-.default {
+p {
+    display: inline-block;
+}
+
+.main-name {
+    width: 100px;
+    padding-left: 80px;
+}
+
+.main-code {
+    width: 100px;
+}
+
+.main-price {
+    width: 100px;
+}
+
+.main-rating {
+    width: 100px;
+}
+
+.main-number {
+    width: 100px;
+}
+
+body{
     background-color: #E0FFFF;
     color: black;
-}
-
-.dark-mode {
-  padding: 100px;
-  background-color: #070366FF;
-  color: purple;
-}
-
-.fade {
-    animation: fadeIn linear 10s;
-    -webkit-animation: fadeIn linear 10s;
-    -moz-animation: fadeIn linear 10s;
-    -o-animation: fadeIn linear 10s;
-    -ms-animation: fadeIn linear 10s;
-    padding-top: 100px;
-    background-color: #FFFF00;
-    color: darkgrey;
-}
-
-@keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
-
-@-moz-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
-
-@-webkit-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
-
-@-o-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
-
-@-ms-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+    font-size: 16px;
 }
 
 </style>
 </head>
 <body>
 {% block content %}
-<div1 class="results">
+<div2 class="results">
 {% if products == [] %}
     <h1>Product(s) not found</h1>
 {% else %}
-    <div1>
-      Choose your theme
-      <select id="theme-selector">
-        <option value="default">Default</option>
-        <option value="dark-mode">Dark mode</option>
-        <option value="fade">Fade Mode</option>
-      </select>
-    </div1>
-    <br><br><br>
-    <script>
-    window.onload = function() {
-      let thisTheme = localStorage.getItem("mytheme") || "default";
-      setTheme("default", thisTheme);
-      const themeSelector = document.getElementById("theme-selector");
-      themeSelector.value = thisTheme;
-      themeSelector.addEventListener("change", function(e) {
-        const newTheme = e.currentTarget.value;
-        setTheme(thisTheme, newTheme);
-      });
-
-      function setTheme(oldTheme, newTheme) {
-        const body = document.getElementsByTagName("body")[0];
-        body.classList.remove(oldTheme);
-        body.classList.add(newTheme);
-        thisTheme = newTheme;
-        localStorage.setItem("mytheme", newTheme);
-      }
-    };
-    </script>
-    {% for product in products %}
+    <h1>Electronics</h1>
+    <img src="https://i.ibb.co/7QMpC6n/lick.jpg" height="200px" width="400px">
+    {% for i in range(((products | length) / 3) | int) %}
         <div class="result-product">
-            <a href="{{ url_for('review',user=usr, product_code=product.Product_Code) }}"><img class="main-image" src={{ product.Image_Url }}></a>
             <div1 class="result-details">
-                <p class="main-name">Name: {{ product.Name }}</p>
-                <p class="main-code">Code: {{ product.Product_Code }}</p>
-                <p class="main-price">Price: ${{ product.Price }}</p>
-                <p class="main-rating">Rating: {{ product.Rating }}</p>
-                <p class="main-number">Number of ratings: {{ product.Number_Rating }}</p>
+                <a href="{{ url_for('review',user=usr, product_code=products[i * 3].Product_Code) }}"><img class="main-image" src={{ products[i * 3].Image_Url }} width="200px"></a>          <a href="{{ url_for('review',user=usr, product_code=products[i * 3 + 1].Product_Code) }}"><img class="main-image" src={{ products[i * 3 + 1].Image_Url }} padding-left="150px" width="200px"></a>          <a href="{{ url_for('review',user=usr, product_code=products[i * 3 + 2].Product_Code) }}"><img class="main-image" src={{ products[i * 3 + 2].Image_Url }} padding-left="150px" width="200px"></a>
+                <br>
+                <p class="main-name">Name: {{ products[i * 3].Name }}</p>        <p class="main-name">Name: {{ products[i * 3 + 1].Name }}</p>        <p class="main-name">Name: {{ products[i * 3 + 2].Name }}</p>
+                <br>
+                <span class="main-code" style="padding-left: 80px;">Code: {{ products[i * 3].Product_Code }}</span>          <span class="main-code" style="padding-left: 130px;">Code: {{ products[i * 3 + 1].Product_Code }}</span>          <span class="main-code" style="padding-left: 130px;">Code: {{ products[i * 3 + 2].Product_Code }}</span>
+                <br>
+                <span class="main-price" style="padding-left: 80px;">Price: ${{ products[i * 3].Price }}</span>          <span class="main-price" style="padding-left: 114px;">Price: ${{ products[i * 3 + 1].Price }}</span>          <span class="main-price" style="padding-left: 116px;">Price: ${{ products[i * 3 + 2].Price }}</span>
+                <br>
+                <span class="main-rating" style="padding-left: 80px;">Rating: {{ products[i * 3].Rating }}</span>          <span class="main-rating" style="padding-left: 22px;">Rating: {{ products[i * 3 + 1].Rating }}</span>          <span class="main-rating" style="padding-left: 22px;">Rating: {{ products[i * 3 + 2].Rating }}</span>
+                <br>
+                <span class="main-number" style="padding-left: 80px;">Ratings: {{ products[i * 3].Number_Rating }}</span>          <span class="main-number" style="padding-left: 74px;">Ratings: {{ products[i * 3 + 1].Number_Rating }}</span>          <span class="main-number" style="padding-left: 80px;">Ratings: {{ products[i * 3 + 2].Number_Rating }}</span>
             </div1>
         </div>
         <br>
     {% endfor %}
+    {% if (products | length) % 3 == 1 %}
+        <div class="result-product">
+            <div1 class="result-details">
+                <a href="{{ url_for('review',user=usr, product_code=products[(products | length) - 1].Product_Code) }}"><img class="main-image" src={{ products[(products | length) - 1].Image_Url }}></a>
+                <p class="main-name">Name: {{ products[(products | length) - 1].Name }}</p>
+                <p class="main-code">Code: {{ products[(products | length) - 1].Product_Code }}</p>
+                <p class="main-price">Price: ${{ products[(products | length) - 1].Price }}</p>
+                <p class="main-rating">Rating: {{ products[(products | length) - 1].Rating }}</p>
+                <p class="main-number">Number of ratings: {{ products[(products | length) - 1].Number_Rating }}</p>
+            </div1>
+        </div>
+    {% elif (products | length) % 3 == 2 %}
+        <div class="result-product">
+            <div1 class="result-details">
+                <a href="{{ url_for('review',user=usr, product_code=products[(products | length) - 2].Product_Code) }}"><img class="main-image" src={{ products[(products | length) - 2].Image_Url }} width="200px"></a>          <a href="{{ url_for('review',user=usr, product_code=products[(products | length) - 1].Product_Code) }}"><img class="main-image" src={{ products[(products | length) - 1].Image_Url }} padding-left="150px" width="200px"></a>
+                <br>
+                <p class="main-name">Name: {{ products[(products | length) - 2].Name }}</p>        <p class="main-name">Name: {{ products[(products | length) - 1].Name }}</p>
+                <br>
+                <span class="main-code" style="padding-left: 80px;">Code: {{ products[(products | length) - 2].Product_Code }}</span>          <span class="main-code" style="padding-left: 130px;">Code: {{ products[(products | length) - 1].Product_Code }}</span>
+                <br>
+                <span class="main-price" style="padding-left: 80px;">Price: ${{ products[(products | length) - 2].Price }}</span>          <span class="main-price" style="padding-left: 114px;">Price: ${{ products[(products | length) - 1].Price }}</span>
+                <br>
+                <span class="main-rating" style="padding-left: 80px;">Rating: {{ products[(products | length) - 2].Rating }}</span>          <span class="main-rating" style="padding-left: 22px;">Rating: {{ products[(products | length) - 1].Rating }}</span>
+                <br>
+                <span class="main-number" style="padding-left: 80px;">Ratings: {{ products[(products | length) - 2].Number_Rating }}</span>          <span class="main-number" style="padding-left: 74px;">Ratings: {{ products[(products | length) - 1].Number_Rating }}</span>
+            </div1>
+        </div>
+    {% endif %}
 {% endif %}
-</div1>
+</div2>
 {% endblock %}
 </body>
