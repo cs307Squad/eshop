@@ -28,7 +28,12 @@ if(isset ($_POST['fname']) && isset ($_POST['lname']) && isset($_POST['username'
     $password = validate_password($_POST['password']);
     $cpassword = validate_cpassword($_POST['cpassword']);
     $email = validate_email($_POST['email']);
+    
 
+}
+
+if (isset ($_POST['userType'])) {
+    $userType= $_POST['userType'];
 }
 
 if(empty($fname)) {
@@ -52,14 +57,13 @@ if(empty($email)) {
     echo 'Email required';
 }
 
-/*
-if (user_exists($conn ,$_POST['fname']) === false) {
-    exit('Username already exists');
-} 
-*/
+if(empty($userType)) {
+    
+    exit('Select a User Type');
+}
 
-$sql = "INSERT INTO user_accounts (fname, lname, username, password, cpassword, email) VALUES ('$fname', '$lname', '$username', '$password', '$cpassword', '$email')";
 
+$sql = "INSERT INTO user_accounts (fname, lname, username, password, cpassword, email, userType) VALUES ('$fname', '$lname', '$username', '$password', '$cpassword', '$email', '$userType')";
 
 if(mysqli_query($conn, $sql)){
     echo "Registration complete";
@@ -67,22 +71,15 @@ if(mysqli_query($conn, $sql)){
     echo "Error, unable to complete registration" . mysqli_error($conn);
 }
 
-/*
-$_SESSION["fname"] = $fname;
-$_SESSION["lname"] = $lname;
-$_SESSION["username"] = $username;
-$_SESSION["password"] = $password;
-$_SESSION["cpassword"] = $cpassword;
-$_SESSION["email"] = $email;
-*/
-
-/*
-function user_exists($conn, $data) {
-    $sql = "SELECT * FROM user_accounts WHERE username = '$data'";
-    $query = mysqli_query($conn, $sql);
-    if(mysqli_num_Rows)
+if (strcmp($userType,'Merchant') === 0) {
+    <a href ="merchantpage.php">Merchant Page</a>;
+    echo 'Merchant page';
 }
-*/
+
+if (strcmp($userType,'Shopper') === 0) {
+    echo 'Shopper page';
+}
+
 
 function validate_fname($data){
     if(preg_match("/^([a-zA-Z' ]+)$/",$data) == 0){
@@ -105,11 +102,7 @@ function validate_username($data){
     return($data);
 }
 function validate_password($data){
-    //if (preg_match('/^[a-zA-Z0-9]+$/', $data) == 0) {
-    //    exit('Enter Valid Password');
-  //  }
-
-   // $hashedpassword = password_hash($data, PASSWORD_DEFAULT);
+  
     return($data);
 }
 

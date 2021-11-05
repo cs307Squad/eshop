@@ -1,7 +1,11 @@
 <?php
-session_start();
-include "dbconn.php";
+require_once "dbconn.php";
 
+// This is if user accesses the register page through a method that is not the register button?
+/*if(!isset($_POST["submit"])) {
+    echo 'Incorrect Access Path';
+}
+*/
 //generic php validation for password, truth tables for validation
 /*	        “”	    “apple”	  NULL	FALSE	0	    undefined
 empty()	    TRUE	FALSE	  TRUE	TRUE	TRUE	TRUE
@@ -17,9 +21,12 @@ password . varchar(255) . null
 
 
 if(isset($_POST['username']) && isset($_POST['password'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+
+    $username = validate_username($_POST['username']);
+    $password = validate_password($_POST['password']);
+    $userType = '';
 }
+
 
 if(empty($username)) {
     echo 'Username required';
@@ -27,13 +34,39 @@ if(empty($username)) {
 if(empty($password)) {
     echo 'Password required';
 }
+session_start();
+$sql = "SELECT * FROM user_accounts WHERE username = '$username' AND password= '$password'";
+$dataentry = $conn->query ($sql);
 
-// Verify that the person that logged in has actual user information, Now I need to search the database for a match on their %username and $password.
-$sql = "SELECT * FROM loginstuff WHERE name='$username' AND password = '$password'";
+if(mysqli_num_rows($dataentry) === 1) {
+    $row = mysqli_fetch_assoc($dataentry);
+    if($row['username'] === $username && $row['password'] === $password) {
 
-if firstrow === $username AND 2ndrow === password {
-    successful login
-} else {
-    user not found.
+        if (strcmp($row['userType'],'Shopper') === 0) {
+            header("Location:shopperpagel.php");
+        }
+        if (strcmp($row['userType'],'Merchant') === 0) {
+            header("Location:merchantpagel.php");
+        }
+
+        echo 'logged in';
+    } else {
+        echo 'No account with this username and password';
+    }
 }
 
+$_SESSION["username"] = $username;
+$_SESSION["password"] = $password;
+
+function validate_username($data){
+    if (preg_match('/^[a-zA-Z0-9]+$/', $data) == 0) {
+        exit('Username cannot contain special characters!');
+    }
+    return($data);
+}
+function validate_password($data){
+    if (preg_match('/^[a-zA-Z0-9]+$/', $data) == 0) {
+        exit('Enter Valid Password');
+    }
+    return($data);
+}
