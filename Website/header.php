@@ -15,37 +15,33 @@
          <div class="col-md-6">
 			<form method="POST">
 				<div class="u-form-control-hidden">
-					<input type="text" class="form-control" id="title", style="width: 100%", value="<?= $rows['Name'] ?>" />
+					<input type="text" class="form-control" name="title", style="width: 100%", value="<?= $rows['Name'] ?>" />
 					<input type="hidden" id="blog_id"/>
-				</div>
-			</form>
-		</div>
-	</div>
-          <div class="u-nav-container-collapse">
+
+				 <div class="u-nav-container-collapse">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close"></div>
                 <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li
-                    <form method="POST">
+
 				<div class="u-form-control-hidden">
 					<input type="text" class="form-control" id="home", value="<?= $rows['Javascript_Files'] ?>" />
 					<input type="hidden" id="home_id"/>
 				</div>
-			</form>
+
 </li><li>
-                      <form method="POST">
+
 				<div class="u-form-control-hidden">
 					<input type="text" class="form-control" id="about", value="<?= $rows['Html_Files'] ?>" />
 					<input type="hidden" id="about_id"/>
 				</div>
-			</form>
+
 </li><li>
-                        <form method="POST">
+
 				<div class="u-form-control-hidden">
 					<input type="text" class="form-control" id="contact", value="<?= $rows['Category'] ?>" />
 					<input type="hidden" id="contact_id"/>
 				</div>
-			</form>
 </li></ul>
               </div>
             </div>
@@ -65,13 +61,22 @@
       </div>
     </section>
 
-         			<div class="form-group">
+
 					<textarea id="content" class="form-control" style="resize:none; height:700px;width: 100%"></textarea>
-				</div>
 				<div id="result"></div>
 
 <br />
-         <button type="button" id="save" class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Save Webpage</button>
 
+
+				</div>
+                     <button type="submit" formaction="savepost.php">Submit</button>
+
+			</form>
+		</div>
+	</div>
+
+
+
+<script src="script.js">
 
 </body></html>

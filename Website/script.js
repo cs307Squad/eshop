@@ -5,7 +5,7 @@ $(document).ready(function(){
 		var title = $('#title').val();
 		var content = $('#content').val();
 		var blog_id = $('#blog_id').val();
-
+		print("here");
 			if(title != "" && content != ""){
 				$.ajax({
 				url: 'savepost.php',
