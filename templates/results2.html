@@ -1,0 +1,75 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+div {
+    background-color: white;
+    border: 10px blue;
+    padding: 20px;
+    width: 600px;
+}
+
+body {
+    animation: fadeIn linear 10s;
+    -webkit-animation: fadeIn linear 10s;
+    -moz-animation: fadeIn linear 10s;
+    -o-animation: fadeIn linear 10s;
+    -ms-animation: fadeIn linear 10s;
+    padding-top: 100px;
+    background-color: #FFFF00;
+    color: darkgrey;
+    font-size: 25px;
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+</style>
+</head>
+<body>
+{% block content %}
+<div1 class="results">
+{% if products == [] %}
+    <h1>Product(s) not found</h1>
+{% else %}
+    <h1>Clothing</h1>
+    <img src="https://i.ibb.co/VY58T28/clo.jpg" height="200px" width="400px">
+    {% for product in products %}
+        <div class="result-product">
+            <a href="{{ url_for('review',user=usr, product_code=product.Product_Code) }}"><img class="main-image" src={{ product.Image_Url }}></a>
+            <div1 class="result-details">
+                <p class="main-name">Name: {{ product.Name }}</p>
+                <p class="main-code">Code: {{ product.Product_Code }}</p>
+                <p class="main-price">Price: ${{ product.Price }}</p>
+                <p class="main-rating">Rating: {{ product.Rating }}</p>
+                <p class="main-number">Number of ratings: {{ product.Number_Rating }}</p>
+            </div1>
+        </div>
+        <br>
+    {% endfor %}
+{% endif %}
+</div1>
+{% endblock %}
+</body>

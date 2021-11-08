@@ -59,6 +59,13 @@
 							<input type = "tel" name = "telephone" id = "telephone" placeholder = "telephone#">
 						</td>
 					
+					
+						<select name = "userType">
+                        <option value ="" disabled selected> This account will be used by a </option>
+                        <option value ="Merchant">Merchant</option>
+                        <option value = "Shopper">Shopper</option>
+                    </select>
+
 					<tr>
 						<td>
                         <button type ="submit" class = "btn" name = "reg_user">Create Account</button>

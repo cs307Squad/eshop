@@ -6,6 +6,7 @@ from flask import render_template, request, jsonify, url_for, redirect
 from flask import render_template, request, jsonify, url_for
 import src.models
 import mysql.connector as connector
+import decimal
 # import xml.dom.minidom as m
 # doc = m.parse(r"C:/Users/pc/Downloads/eshop-io/eshop/src/templates/home.html")
 
@@ -59,29 +60,70 @@ def login():
         username = request.form['username']
         print('user is: ' + str(username))
         password = request.form['password']
-        logins = src.models.login(username, password)
-        if not logins:
-            return render_template('nope.html')
+        sel = request.form.get('cod')
+        print("sel: " + str(sel))
+        if str(sel) == "mer":
+            logins = src.models.login_mer(username, password)
+            if not logins:
+                return render_template('nope.html')
+            else:
+                return redirect(url_for('webste'))
         else:
-            return redirect(url_for('search', usr=username))
+            logins = src.models.login_cus(username, password)
+            if not logins:
+                return render_template('nope.html')
+            else:
+                return redirect(url_for('lock', usr=username))
     else:
         return render_template('login.html')
 
 
-@app.route('/login/<usr>', methods=['POST', 'GET'])
-def search(usr):
+@app.route('/website', methods=['POST', 'GET'])
+def webste():
+    if request.method == 'POST':
+        na = request.form['nae']
+        ca = request.form.get('cole')
+        src.models.update_web(na, ca)
+        return render_template('web.html')
+    else:
+        return render_template('web.html')
+
+
+@app.route('/login/<usr>/<tp>/<ct>', methods=['POST', 'GET'])
+def search(usr,tp,ct):
     if request.method == 'POST':
         res = request.form['re']
         select = request.form.get('col')
+        sel = request.form.get('cold')
         if str(select) == "url" or str(select) == "image_url":
             res = res[res.rfind('/') + 1:len(res) - 1]
-        return redirect(url_for('find', us=usr, rs=res, sl=select))
+        return redirect(url_for('find', us=usr, rs=res, sl=select,tp=tp,ct=ct))
     else:
         return render_template('home.html')
 
 
-@app.route('/<us>/<sl>/<rs>')
-def find(us, rs, sl):
+@app.route('/lock/<usr>', methods=['POST', 'GET'])
+def lock(usr):
+    if request.method == 'POST':
+        rek = request.form['reg']
+        re = src.models.get_site(rek)
+        r = str(re[0])
+        print(" r is:" + r)
+        if len(r) == 0:
+            return render_template('nope.html')
+        else:
+            if r == 'Electronics' or r == 'Appliances':
+                return redirect(url_for('search',usr=usr, tp='results.html', ct='Electronics'))
+            elif r == 'Kitchen, Bedroom and Bathroom':
+                return redirect(url_for('search',usr=usr, tp='results1.html', ct='Kitchen, Bedroom and Bathroom'))
+            elif r == 'Clothes':
+                return redirect(url_for('search',usr=usr, tp='results2.html', ct='Clothes'))
+    else:
+        return render_template('look.html')
+
+
+@app.route('/<us>/<sl>/<rs>/<tp>/<ct>')
+def find(us, rs, sl, tp, ct):
     print("select is: " + str(sl))
     print("res is:" + str(rs))
     result = []
@@ -104,10 +146,10 @@ def find(us, rs, sl):
     elif str(sl) == "image_url":
         result = src.models.get_products_image(rs)
     else:
-        result = src.models.get_products_name(rs)
+        result = src.models.get_products_name(rs, ct)
     print("result is: " + str(result))
     # usrid = src.models.get_customer(us)
-    return render_template('results.html', usr=us, products=result)
+    return render_template(tp, usr=us, products=result)
 
 
 @app.route('/submit')
@@ -122,8 +164,27 @@ def add(p_code):
 def review(user, product_code):
     if request.method == "POST":
         rating = request.form.get("rating")
+        rat = 0.0
+        rat = decimal.Decimal(str(rating)) / 2
+        print("rat is: " + str(rat))
+        rev = str(request.form['rev'])
+        print('length of rev is: ' + str(len(str(rev))))
         review = request.form['review']
-        src.models.update_rating(product_code, review, user, rating)
+        print('review is: ' + str(review))
+        customer = []
+        customer = src.models.get_customer(str(user))
+        print("user is: " + str(user))
+        custom = str(customer[0])
+        print("custom is: " + custom)
+        if len(str(rev)) == 0:
+            src.models.update_rating(product_code, review, custom, rat)
+        else:
+            src.models.update_rating(product_code, rev, custom, rat)
+        res = []
+        res = src.models.check_product(product_code)
+        re = str(res[0])
+        print("re is: " + re)
+        src.models.update_product(product_code)
         rev = []
         rev = src.models.get_rating(str(product_code))
         return render_template('reviews.html', reviews=rev)
