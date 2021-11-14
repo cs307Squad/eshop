@@ -194,6 +194,17 @@ def review(user, product_code):
         print("rev is: " + str(rev))
         return render_template('reviews.html', reviews=rev)
 
+@app.route('/step1')
+def sone():
+    return render_template('step1.html')
+
+@app.route('/step2')
+def stwo():
+    return render_template('step2.html')
+
+@app.route('/step3')
+def sthe():
+    return render_template('step3.html')
 
 if __name__ == '__main__':
     app.run(threaded=True, port=5000, debug=True)
