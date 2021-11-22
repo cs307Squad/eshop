@@ -1,0 +1,16 @@
+<body>
+<style>
+    input {
+        font-size: 40px;
+    }
+</style>
+{% for i in range(numdev - 1) %}
+<form name="nam" action="" method="post">
+    <input class="name" type="text" placeholder=" Enter teammate {{ i + 1 }} " name="team{{ i }}">
+</form>
+{% endfor %}
+<br><br>
+<form name="mas" action="" method="post">
+    <input class="name" type="text" placeholder=" Enter manager 's name " name="man">
+</form>
+</body>
