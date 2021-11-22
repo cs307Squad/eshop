@@ -1,6 +1,12 @@
+<body>
+<style>
+    head {
+        font-size: 100px;
+    }
+</style>
 <form name="search" action="" method="post">
     <div class="form-group">
-    <input class="name" type="text" placeholder="  Enter website's name ..." name="nae">
+    <input class="name" type="text" placeholder="  Enter website's name " name="nae">
     <label for="cold">Pick Your Website's Template</label>
     <select id="cold" name="cole">
         <option value="Electronics">Electronics Template </option>
@@ -9,14 +15,23 @@
         <option value="Appliances">Appliances Template</option>
     </select>
     </div>
+    <br><br>
+    <div class="form-two">
+    <input size="30" class="pass" type="text" placeholder="  Enter website's password " name="pas">
+    <input size="30" class="" type="text" placeholder="  Enter number of developer " name="nud">
+    </div>
     <button class="button" type="submit">Submit</button>
 </form>
+<br>
 <a href="{{ url_for('sone') }}"> <button class="button" type="submit">See Tutorial</button></a>
-<h1>Electronics and Appliances:</h1>
+<br><br>
+<h1>Example Templates</h1>
+<head>Electronics and Appliances:</head><br>
 <img src="https://i.ibb.co/YPVwHys/tem1.png" width="400" height="200">
 <br><br>
-<h1>Clothing:</h1>
+<head>Clothing:</head><br>
 <img src="https://i.ibb.co/mCBrJ1q/cap3.png" width="400" height="200">
 <br><br>
-<h1>Kitchen, Bedroom, Bathroom:</h1>
+<head>Kitchen, Bedroom, Bathroom:</head><br>
 <img src="https://i.ibb.co/JnF29kk/capta.png" width="400" height="200">
+</body>
