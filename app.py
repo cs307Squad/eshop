@@ -83,6 +83,9 @@ def webste():
     if request.method == 'POST':
         na = request.form['nae']
         ca = request.form.get('cole')
+        nd = request.form.get('nud')
+        if int(nd) > 1:
+            return redirect(url_for('team',num=nd))
         src.models.update_web(na, ca)
         return render_template('web.html')
     else:
@@ -205,6 +208,28 @@ def stwo():
 @app.route('/step3')
 def sthe():
     return render_template('step3.html')
+
+@app.route('/website/<num>', methods=['POST', 'GET'])
+def team(num):
+    if request.method == 'POST':
+        a = [None] * num
+        for i in range(num):
+            a[i] = request.form["team" + str(i)]
+        manager = request.form["man"]
+        return redirect(url_for('make'))
+    else:
+        return render_template("temmates.html",numdev=num)
+
+@app.route('/website/make', methods=['POST', 'GET'])
+def make():
+    if request.method == 'POST':
+        return redirect(url_for('pay'))
+    else:
+        return render_template("maketemplate.html")
+
+@app.route('/website/payment', methods=['POST', 'GET'])
+def pay():
+        return render_template("payment.php")
 
 if __name__ == '__main__':
     app.run(threaded=True, port=5000, debug=True)
