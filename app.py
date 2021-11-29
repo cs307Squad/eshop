@@ -7,6 +7,7 @@ from flask import render_template, request, jsonify, url_for
 import src.models
 import mysql.connector as connector
 import decimal
+import subprocess as sub
 # import xml.dom.minidom as m
 # doc = m.parse(r"C:/Users/pc/Downloads/eshop-io/eshop/src/templates/home.html")
 
@@ -85,7 +86,7 @@ def webste():
         ca = request.form.get('cole')
         nd = request.form.get('nud')
         if int(nd) > 1:
-            return redirect(url_for('team',num=nd))
+            return redirect(url_for('team', num=nd))
         src.models.update_web(na, ca)
         return render_template('web.html')
     else:
@@ -93,14 +94,14 @@ def webste():
 
 
 @app.route('/login/<usr>/<tp>/<ct>', methods=['POST', 'GET'])
-def search(usr,tp,ct):
+def search(usr, tp, ct):
     if request.method == 'POST':
         res = request.form['re']
         select = request.form.get('col')
         sel = request.form.get('cold')
         if str(select) == "url" or str(select) == "image_url":
             res = res[res.rfind('/') + 1:len(res) - 1]
-        return redirect(url_for('find', us=usr, rs=res, sl=select,tp=tp,ct=ct))
+        return redirect(url_for('find', us=usr, rs=res, sl=select, tp=tp, ct=ct))
     else:
         return render_template('home.html')
 
@@ -116,11 +117,11 @@ def lock(usr):
             return render_template('nope.html')
         else:
             if r == 'Electronics' or r == 'Appliances':
-                return redirect(url_for('search',usr=usr, tp='results.html', ct='Electronics'))
+                return redirect(url_for('search', usr=usr, tp='results.html', ct='Electronics'))
             elif r == 'Kitchen, Bedroom and Bathroom':
-                return redirect(url_for('search',usr=usr, tp='results1.html', ct='Kitchen, Bedroom and Bathroom'))
+                return redirect(url_for('search', usr=usr, tp='results1.html', ct='Kitchen, Bedroom and Bathroom'))
             elif r == 'Clothes':
-                return redirect(url_for('search',usr=usr, tp='results2.html', ct='Clothes'))
+                return redirect(url_for('search', usr=usr, tp='results2.html', ct='Clothes'))
     else:
         return render_template('look.html')
 
@@ -197,17 +198,21 @@ def review(user, product_code):
         print("rev is: " + str(rev))
         return render_template('reviews.html', reviews=rev)
 
+
 @app.route('/step1')
 def sone():
     return render_template('step1.html')
+
 
 @app.route('/step2')
 def stwo():
     return render_template('step2.html')
 
+
 @app.route('/step3')
 def sthe():
     return render_template('step3.html')
+
 
 @app.route('/website/<num>', methods=['POST', 'GET'])
 def team(num):
@@ -216,20 +221,37 @@ def team(num):
         for i in range(num):
             a[i] = request.form["team" + str(i)]
         manager = request.form["man"]
-        return redirect(url_for('make'))
+        return redirect(url_for('make', man=manager))
     else:
-        return render_template("temmates.html",numdev=num)
+        return render_template("temmates.html", numdev=num)
 
-@app.route('/website/make', methods=['POST', 'GET'])
-def make():
+
+@app.route('/<usr>/<man>/website/make', methods=['POST', 'GET'])
+def make(usr, man):
+    check = 0
     if request.method == 'POST':
-        return redirect(url_for('pay'))
+        return redirect(url_for('submit', ck=check))
     else:
-        return render_template("maketemplate.html")
+        return render_template("maketemplate.html", us=usr, mn=man, cck=check)
 
-@app.route('/website/payment', methods=['POST', 'GET'])
+
+@app.route('/<ck>/website/payment', methods=['POST', 'GET'])
+def submit(ck):
+    if ck == 1:
+        return render_template("results1.html")
+    elif ck == 2:
+        return render_template("results2.html")
+    elif ck == 3:
+        return render_template("results3.html")
+    else:
+        return redirect(url_for('pay'))
+
+
+@app.route('/website/payment/payment.php', methods=['POST', 'GET'])
 def pay():
-        return render_template("payment.php")
+    output = sub.run(["php", "payment.php"], stdout=sub.PIPE)
+    return output.stdout
+
 
 if __name__ == '__main__':
     app.run(threaded=True, port=5000, debug=True)
