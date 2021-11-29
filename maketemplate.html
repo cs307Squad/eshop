@@ -1,7 +1,33 @@
+<meta id="my-data" data-name="{{ cck }}">
+<head>
+    <script>
+    function setcheckone (){
+        let $('#my-data').data() = 1
+    }
+    function setchecktwo (){
+        let $('#my-data').data() = 2
+    }
+    function setcheckthree (){
+        let $('#my-data').data() = 3
+    }
+    </script>
+</head>
 <body>
 <style>
     head {
         font-size: 100px;
+    }
+
+    .float-container {
+        border: 3px solid #fff;
+        padding: 20px;
+    }
+
+    .float-child {
+        width: 50%;
+        float: left;
+        padding: 20px;
+        border: 2px solid red;
     }
 
     .flip-template {
@@ -42,54 +68,55 @@
         transform: rotateY(180deg);
     }
 </style>
+<div class="float-container">
+<div class="float-child">
 <div class="flip-template">
         <div class="flip-template-in">
             <div class="flip-template-front">
-            <img src="https://i.ibb.co/GFNMb0V/newpage.png" alt="A" style="width:300px;height:300px;">
-            </div>
-            <div class="flip-template-back">
-            <h1>Condense</h1>
-            </div>
-        </div>
-        <div class="flip-template-in">
-            <div class="flip-template-front">
-            <img src="https://i.ibb.co/Dgh0GjG/nextpage.png" alt="B" style="width:300px;height:300px;">
-            </div>
-            <div class="flip-template-back">
-            <h1>Sideway</h1>
-            </div>
-        </div>
-        <div class="flip-template-in">
-            <div class="flip-template-front">
-            <img src="https://i.ibb.co/gzhtKX2/nextpage1.png" alt="C" style="width:300px;height:300px;">
+                <a href="#" onclick="setcheckone()" >
+                    <img src="https://i.ibb.co/gzhtKX2/nextpage1.png" alt="C" style="width:300px;height:300px;">
+                </a>
             </div>
             <div class="flip-template-back">
             <h1>Spread</h1>
             </div>
         </div>
 </div>
-<form name="search" action="" method="post">
-    <div class="form-group">
-        <option value="Kitchen, Bedroom and Bathroom">Kitchen, Bedroom / Bathroom Template</option>
-        <option value="Clothes">Clothing Template</option>
-        <option value="Appliances">Appliances Template</option>
-    </div>
-    <br><br>
-    <div class="form-two">
-    <input class="name" type="text" placeholder="  Enter website's name " name="nae">
-    </div>
-    <button class="button" type="submit">Submit</button>
-</form>
-<br>
-<a href="{{ url_for('sone') }}"> <button class="button" type="submit">See Tutorial</button></a>
-<br><br>
-<h1>Example Templates</h1>
-<head>Electronics and Appliances:</head><br>
-<img src="https://i.ibb.co/YPVwHys/tem1.png" width="400" height="200">
-<br><br>
-<head>Clothing:</head><br>
-<img src="https://i.ibb.co/mCBrJ1q/cap3.png" width="400" height="200">
-<br><br>
-<head>Kitchen, Bedroom, Bathroom:</head><br>
-<img src="https://i.ibb.co/JnF29kk/capta.png" width="400" height="200">
+</div>
+<div class = "float-child">
+<div class="flip-template">
+        <div class="flip-template-in">
+            <div class="flip-template-front">
+            <a href="#" onclick="setchecktwo()" >
+                <img src="https://i.ibb.co/GFNMb0V/newpage.png" alt="A" style="width:300px;height:300px;">
+            </a>
+            </div>
+            <div class="flip-template-back">
+            <h1>Condense</h1>
+            </div>
+        </div>
+</div>
+</div>
+</div>
+<br><br><br><br><br><br>
+<div class="flip-template">
+        <div class="flip-template-in">
+            <div class="flip-template-front">
+            <a href="#" onclick="setcheckthree()" >
+                <img src="https://i.ibb.co/Dgh0GjG/nextpage.png" alt="B" style="width:300px;height:300px;">
+            </a>
+            </div>
+            <div class="flip-template-back">
+            <h1>Sideway</h1>
+            </div>
+        </div>
+</div>
+<button type="submit" name="1">Submit</button>
+{% if mn == usr %}
+<h>Accept Change Request?</h>
+    <container>
+    <button type="submit" name="2">Yes</button>
+    <button type="submit" name="3">No</button>
+    </container>
+{% endif mn == usr %}
 </body>
