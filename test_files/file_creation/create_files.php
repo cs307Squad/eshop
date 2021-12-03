@@ -85,6 +85,10 @@ for ($i = 0; $i < count($results); $i++) {
                 <p><button name=\"echeck\" type=\"submit\" id=\"checkout-button\">Pay With Echeck</button></p>
     </form>
             <form action=\"payment/create-checkout-session.php\" method=\"POST\">
+		<select name='destination'>
+			<option value='0'>Personal</optional>
+			<option value='1'>For Store</optional>
+		</select>
                 <p><button name=\"submit\" type=\"submit\" id=\"checkout-button\">Traditional Checkout</button></p>
             </form>
             <!-- Load Facebook SDK for JavaScript -->

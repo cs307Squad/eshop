@@ -19,15 +19,15 @@ $stripe->customers->create([
 $checkout_session = \Stripe\Checkout\Session::create([
   'line_items' => [[
     # TODO: replace this with the `price` of the product you want to sell
-    'price' => 'price_1JkpTMJytYJMwZffJogyxtkv',
+    'price' => 'price_1K2jNdJytYJMwZffUc7Q0YhE',
     'quantity' => 1,
   ]],
   'payment_method_types' => [
     'card',
   ],
   'mode' => 'payment',
-  'success_url' => $YOUR_DOMAIN . 'checkout.php',
-  'cancel_url' => $YOUR_DOMAIN . 'cancel.html',
+  'success_url' => 'http://18.119.0.28/test_files/file_creation/get_inventory.php',
+  'cancel_url' => 'http://18.119.0.28/test_files/file_creation/get_inventory.php',
 ]);
 
 $myfile = fopen("testfile.txt", "w");

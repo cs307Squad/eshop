@@ -112,9 +112,9 @@ p {
 ";
 
 $query = new ParseQuery("Inventory");
-$query->limit(1000);
+$query->limit(10000);
 $results = $query->find();
-echo "Successfully retrieved " . count($results) . " products.";
+//echo "Successfully retrieved " . count($results) . " products.";
 // Do something with the returned ParseObject values
 for ($i = 0; $i < count($results); $i++) {
   $object = $results[$i];
