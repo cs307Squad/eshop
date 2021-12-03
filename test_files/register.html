@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>E-Shop.io</title>
+        <link rel = "stylesheet" type ="text/css" href ="style.css">
+	</head>
+
+    <body>
+
+    <form action="register.php" method="post">
+    
+        <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Fullname" name="uname" required>
+        <input type="text" placeholder="Lastname" name="username" required>
+        <input type="text" placeholder="Email Address" name="email" required>
+    
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+        <input type="password" placeholder="Confirm Password" name="psw" required>
+ 
+       <label for="psw"><b>Type of Website</b></label>
+	<select name="site_type">
+		<option value="single">Single Product</option>
+		<option value="general">General E-Commerce</option>
+		<option value="empty">Empty Site</option>
+	</select>
+    
+        <button type="submit">Register</button>
+        <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+        </div>
+    
+        </div>
+    </form>
+</body>
+</html>
