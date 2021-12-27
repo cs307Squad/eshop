@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-database.js"></script>
+      
+        <!-- CodeMirror -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.css"/>
+      
+        <!-- Firepad -->
+        <link rel="stylesheet" href="https://firepad.io/releases/v1.5.10/firepad.css" />
+        <script src="https://firepad.io/releases/v1.5.10/firepad.min.js"></script>
+      </head>
+
+<body onload="init()">
+  <div id="firepad"></div>
+  <script>
+    function init() {
+      // Initialize the Firebase SDK.
+      firebase.initializeApp({
+        apiKey: '<API_KEY>',
+        databaseURL: 'https://<DATABASE_NAME>.firebaseio.com'
+      });
+
+      // Get Firebase Database reference.
+      var firepadRef = firebase.database().ref();
+
+      // Create CodeMirror (with lineWrapping on).
+      var codeMirror = CodeMirror(document.getElementById('firepad'), { lineWrapping: true });
+
+      // Create Firepad (with rich text toolbar and shortcuts enabled).
+      var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror,
+          { richTextShortcuts: true, richTextToolbar: true, defaultText: 'Hello, World!' });
+    }
+  </script>
+</body>
+
+
+</html>
